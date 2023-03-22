@@ -5,6 +5,7 @@ const ChatItem = (props) => {
   const { data } = props;
   const { title, imageURL, messageList, orderId, latestMessageTimestamp } = data;
   const time = new Date(latestMessageTimestamp);
+  const lastmessage = messageList.length != 0 ? messageList[messageList.length -1] : '';
 
   return (
     <div className="list-container">
@@ -13,7 +14,7 @@ const ChatItem = (props) => {
         <ul>
           <li>{title}</li>
           <li>Order {orderId}</li>
-          {messageList && <li></li>}
+          {lastmessage != undefined && <li className="msgtxt">{lastmessage?.message}</li>}
         </ul>
       </div>
       <div className="time">{time.toLocaleDateString("en-US")}</div>

@@ -3,7 +3,7 @@ import ChatItem from "./ChatItem";
 import './chatlist.css';
 
 const ChatList = () => {
-  const [filteredList, setFilteredList] = useState(list);
+  const [filteredList, setFilteredList] = useState([]);
 
   const fetchChatList = () => {
     const url = "https://my-json-server.typicode.com/codebuds-fk/chat/chats";
@@ -18,7 +18,7 @@ const ChatList = () => {
 
   const handleChange = (event) => {
     const query = event.target.value;
-    var updatedList = [...list];
+    var updatedList = [...filteredList];
     updatedList = updatedList.filter((item) => {
       return item.title.toLowerCase().indexOf(query.toLowerCase()) !== -1 || item.orderId.toLowerCase().indexOf(query.toLowerCase()) !== -1;
     });
